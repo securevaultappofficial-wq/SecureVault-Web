@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVault v1 - AI Powered Security Adviser</title>
+    <link rel="icon" type="image/x-icon" href="appicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="appicon.png" alt="SecureVault" class="logo-img">
+                <span>SecureVault</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#why-choose" class="nav-link">Why Choose</a></li>
+                <li><a href="#download" class="nav-link">Download</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">SecureVault v1</h1>
+                <p class="hero-subtitle">AI-Powered Security Adviser</p>
+                <p class="hero-description">Scan your phone • Clean junk • Review risks • Understand reports • Ask SecureVault AI</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('download').scrollIntoView({behavior: 'smooth'})">Download Now</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-video">
+                <video width="300" height="600" autoplay muted loop playsinline class="hero-phone">
+                    <source src="appintro.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Development Status -->
+    <section class="dev-status">
+        <div class="dev-banner">
+            <div class="dev-icon">⚠️</div>
+            <div class="dev-text">
+                <h3>Still Under Development & Testing</h3>
+                <p>This is a BETA version. Download and test the app to help us improve it. Please report any bugs or issues you find using the form at the bottom of this page.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is SecureVault Section -->
+    <section id="what" class="what-section">
+        <div class="container">
+            <h2 class="section-title">What is SecureVault v1?</h2>
+            <div class="what-grid">
+                <div class="what-card fade-in">
+                    <div class="card-icon">🔒</div>
+                    <h3>Modern Security Companion</h3>
+                    <p>SecureVault is an Android security app that helps users understand, scan, clean, and improve their digital safety with an AI-powered adviser.</p>
+                </div>
+                <div class="what-card fade-in">
+                    <div class="card-icon">🤖</div>
+                    <h3>AI-Powered Guidance</h3>
+                    <p>Unlike traditional security apps that only show alerts, SecureVault explains risks in simple language and guides users toward safer decisions.</p>
+                </div>
+                <div class="what-card fade-in">
+                    <div class="card-icon">📊</div>
+                    <h3>Advanced Reporting</h3>
+                    <p>Get detailed scan reports, track history, and understand your device security score with transparent, professional documentation.</p>
+                </div>
+                <div class="what-card fade-in">
+                    <div class="card-icon">👤</div>
+                    <h3>Beginner-Friendly</h3>
+                    <p>Designed for normal users who want security but don't understand technical jargon. Everything is explained clearly and simply.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+
+            <!-- Feature 1: Smart Scan -->
+            <div class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-text">
+                        <h3>Smart Scan</h3>
+                        <p>Checks multiple areas of your device in one quick scan and gives you a simple, clear result. Get an overall security score, identify main issues, and see recommended actions.</p>
+                        <ul class="feature-list">
+                            <li>✓ Device security status</li>
+                            <li>✓ Suspicious files detection</li>
+                            <li>✓ Storage & junk analysis</li>
+                            <li>✓ App permission risks</li>
+                            <li>✓ Privacy warnings</li>
+                            <li>✓ Scan history & reports</li>
+                        </ul>
+                    </div>
+                    <div class="feature-video">
+                        <video width="300" height="600" autoplay muted loop playsinline>
+                            <source src="ss.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2: Malware Scan -->
+            <div class="feature-card reverse">
+                <div class="feature-content">
+                    <div class="feature-video">
+                        <video width="300" height="600" autoplay muted loop playsinline>
+                            <source src="ms.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Malware Scan</h3>
+                        <p>Focuses on suspicious files and risky APKs. Helps you avoid dangerous files and understand why APKs from unknown sources should be reviewed carefully.</p>
+                        <ul class="feature-list">
+                            <li>✓ Suspicious APK detection</li>
+                            <li>✓ Unknown file analysis</li>
+                            <li>✓ Risky installation sources</li>
+                            <li>✓ Dangerous permission patterns</li>
+                            <li>✓ Detailed risk explanations</li>
+                            <li>✓ Safe action suggestions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Junk Cleaner -->
+            <div class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-text">
+                        <h3>Junk Cleaner</h3>
+                        <p>Identify and clean unnecessary files to free up storage space. Get immediate benefits by removing temporary files, cache, and app residue.</p>
+                        <ul class="feature-list">
+                            <li>✓ Temporary file detection</li>
+                            <li>✓ Cache cleaning</li>
+                            <li>✓ Empty folder removal</li>
+                            <li>✓ Storage space analysis</li>
+                            <li>✓ Before/after improvement</li>
+                            <li>✓ Safe cleanup actions</li>
+                        </ul>
+                    </div>
+                    <div class="feature-video">
+                        <video width="300" height="600" autoplay muted loop playsinline>
+                            <source src="jcvid.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 4: AI Security Adviser -->
+            <div class="feature-card reverse">
+                <div class="feature-content">
+                    <div class="feature-video">
+                        <video width="300" height="600" autoplay muted loop playsinline>
+                            <source src="ai.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="feature-text">
+                        <h3>AI Security Adviser</h3>
+                        <p>The main highlight feature! Ask SecureVault AI questions about security risks, suspicious files, phishing scams, and get personalized guidance.</p>
+                        <ul class="feature-list">
+                            <li>✓ Explain scan reports</li>
+                            <li>✓ Identify suspicious files</li>
+                            <li>✓ Detect phishing links</li>
+                            <li>✓ Explain scam messages</li>
+                            <li>✓ Privacy advice</li>
+                            <li>✓ Safe habit guidance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 5: Link Protection -->
+            <div class="feature-card">
+                <div class="feature-content">
+                    <div class="feature-text">
+                        <h3>Link Protection</h3>
+                        <p>Scan and identify suspicious or phishing links before you click them. Understand why a link might be dangerous and make informed decisions.</p>
+                        <ul class="feature-list">
+                            <li>✓ Suspicious link detection</li>
+                            <li>✓ Phishing identification</li>
+                            <li>✓ Malicious URL analysis</li>
+                            <li>✓ Safe link verification</li>
+                            <li>✓ Link safety reports</li>
+                            <li>✓ Prevention education</li>
+                        </ul>
+                    </div>
+                    <div class="feature-video">
+                        <video width="300" height="600" autoplay muted loop playsinline>
+                            <source src="lp.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 6: Advanced Reports -->
+            <div class="feature-card reverse">
+                <div class="feature-content">
+                    <div class="feature-video">
+                        <img src="reports.jpg" alt="Advanced Reports" class="feature-img">
+                    </div>
+                    <div class="feature-text">
+                        <h3>Advanced Reports</h3>
+                        <p>Detailed scan reports show transparency and professionalism. Track your device security history and understand what changed and why.</p>
+                        <ul class="feature-list">
+                            <li>✓ Scan type & date</li>
+                            <li>✓ Security score & status</li>
+                            <li>✓ Issues found & risks</li>
+                            <li>✓ AI explanations</li>
+                            <li>✓ Historical comparison</li>
+                            <li>✓ Fixed issue tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">App Showcase</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="s1.jpg" alt="App Intro 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="s2.jpg" alt="App Intro 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="s3.jpg" alt="App Intro 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="s4.jpg" alt="App Intro 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="md.jpg" alt="Main Dashboard">
+                </div>
+                <div class="gallery-item">
+                    <img src="login.jpg" alt="Login">
+                </div>
+                <div class="gallery-item">
+                    <img src="signup.jpg" alt="Signup">
+                </div>
+                <div class="gallery-item">
+                    <img src="useraccount.jpg" alt="User Account">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose SecureVault -->
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose SecureVault?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-number">1</div>
+                    <h3>Not Just a Scanner</h3>
+                    <p>SecureVault doesn't just warn you. It explains the risk and guides you to fix it.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">2</div>
+                    <h3>AI-Powered Guidance</h3>
+                    <p>Ask questions and get personalized explanations in simple language.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">3</div>
+                    <h3>Beginner-Friendly</h3>
+                    <p>No technical jargon. Everything is explained clearly and understandably.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">4</div>
+                    <h3>Professional Reports</h3>
+                    <p>Transparent, structured reports that build trust and show real results.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">5</div>
+                    <h3>Daily Useful Tools</h3>
+                    <p>Junk Cleaner and Smart Scan provide regular value beyond security scanning.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-number">6</div>
+                    <h3>Security Education</h3>
+                    <p>Learn about scams, suspicious links, APKs, and safer digital habits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes it Different -->
+    <section class="difference">
+        <div class="container">
+            <h2 class="section-title">What Makes SecureVault Different?</h2>
+            <div class="difference-content">
+                <div class="difference-item">
+                    <h3>Traditional Antivirus Apps</h3>
+                    <p>"Risk found. ⚠️"</p>
+                    <p class="small">Users are confused and don't know what to do.</p>
+                </div>
+                <div class="vs-icon">VS</div>
+                <div class="difference-item highlight">
+                    <h3>SecureVault v1</h3>
+                    <p>"Risk found. Here's what it means. Here's why it matters. Here's what you should do."</p>
+                    <p class="small">Users feel informed and confident.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Download SecureVault v1</h2>
+            <div class="download-content">
+                <div class="download-info">
+                    <h3>Available for Android</h3>
+                    <p class="warning-text">⚠️ BETA VERSION - Still Under Development</p>
+                    <p>This is a testing version. Download to help us test and improve SecureVault. Please report any bugs or issues using the form below.</p>
+                    <div class="system-requirements">
+                        <h4>System Requirements:</h4>
+                        <ul>
+                            <li>Android 8.0 or higher</li>
+                            <li>Minimum 100MB storage space</li>
+                            <li>Internet connection recommended</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="download-buttons">
+                    <a href="securevault-v1-beta.apk" class="btn btn-download" download>
+                        📱 Download APK (BETA)
+                    </a>
+                    <p class="file-info">Version: 1.0.0 BETA | Size: 45 MB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Meet the Developer</h2>
+            <div class="team-card">
+                <div class="team-image">
+                    <div class="avatar">👨‍💼</div>
+                </div>
+                <div class="team-info">
+                    <h3>Saathvik Bonakurthi</h3>
+                    <p class="role">Founder & Lead Developer</p>
+                    <p class="bio">17 years young, minor developer, Class 12 MPC student at Swaminarayan Gurukul, Hyderabad</p>
+                    <p class="passion">Passionate about cybersecurity and creating solutions that make digital safety understandable for everyone.</p>
+                    <div class="team-details">
+                        <p><strong>Experience:</strong> SecureVault v1 - AI-Powered Android Security App</p>
+                        <p><strong>Focus:</strong> Making complex security concepts simple and accessible</p>
+                        <p><strong>Vision:</strong> Building tools that help users make safer digital decisions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bug Report Section -->
+    <section id="contact" class="bug-report">
+        <div class="container">
+            <h2 class="section-title">Report a Bug or Give Feedback</h2>
+            <p class="section-subtitle">Help us improve SecureVault v1 by reporting bugs and sharing your feedback</p>
+            <div class="form-container">
+                <form id="bugReportForm" class="bug-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="device">Device Model *</label>
+                        <input type="text" id="device" name="device" required placeholder="e.g., Samsung Galaxy S21">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="android">Android Version *</label>
+                        <input type="text" id="android" name="android" required placeholder="e.g., Android 12">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Report Type *</label>
+                        <select id="type" name="type" required>
+                            <option value="">Select type...</option>
+                            <option value="Bug Report">Bug Report</option>
+                            <option value="Crash Issue">Crash Issue</option>
+                            <option value="Performance Issue">Performance Issue</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="General Feedback">General Feedback</option>
+                            <option value="UI/UX Feedback">UI/UX Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feature">Feature/Area Affected *</label>
+                        <select id="feature" name="feature" required>
+                            <option value="">Select feature...</option>
+                            <option value="Smart Scan">Smart Scan</option>
+                            <option value="Malware Scan">Malware Scan</option>
+                            <option value="Junk Cleaner">Junk Cleaner</option>
+                            <option value="AI Security Adviser">AI Security Adviser</option>
+                            <option value="Link Protection">Link Protection</option>
+                            <option value="Advanced Reports">Advanced Reports</option>
+                            <option value="General App">General App</option>
+                            <option value="Login/Signup">Login/Signup</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="severity">Severity Level *</label>
+                        <select id="severity" name="severity" required>
+                            <option value="">Select severity...</option>
+                            <option value="Low">Low - Minor issue</option>
+                            <option value="Medium">Medium - Affects functionality</option>
+                            <option value="High">High - Major functionality broken</option>
+                            <option value="Critical">Critical - App crashes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description *</label>
+                        <textarea id="description" name="description" required placeholder="Describe the bug or issue in detail. Steps to reproduce would be helpful." rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="steps">Steps to Reproduce</label>
+                        <textarea id="steps" name="steps" placeholder="1. Step one&#10;2. Step two&#10;3. Step three" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expected">Expected Behavior</label>
+                        <textarea id="expected" name="expected" placeholder="What did you expect to happen?" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="actual">Actual Behavior</label>
+                        <textarea id="actual" name="actual" placeholder="What actually happened?" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Comments</label>
+                        <textarea id="message" name="message" placeholder="Any other information you'd like to share" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">I consent to share this report with SecureVault development team for improvement purposes</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Submit Bug Report</button>
+                    <p class="form-note">* Required fields | Your report will be sent to: securevaultappofficial@gmail.com</p>
+                </form>
+                <div id="formMessage" class="form-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SecureVault</h4>
+                    <p>AI-powered security companion for Android devices</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="alert('Terms and Conditions\n\nPlease see SecureVault_Terms_and_Privacy_Policy_v1.docx for full details')">Terms & Conditions</a></li>
+                        <li><a href="javascript:void(0)" onclick="alert('Privacy Policy\n\nPlease see SecureVault_Terms_and_Privacy_Policy_v1.docx for full details')">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Version</h4>
+                    <p>SecureVault v1.0 BETA</p>
+                    <p class="small">© 2026 - All rights reserved</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SecureVault v1. Developed by Saathvik Bonakurthi. All rights reserved. | Still Under Development and Testing</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

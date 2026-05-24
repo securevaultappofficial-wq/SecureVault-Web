@@ -1,0 +1,6 @@
+{
+  "name": "SecureVault",
+  "description": "Professional Trust Builder & Scam Safety website for SecureVault V1. SecureVault helps users scan device risks, understand security reports with AI, and stay safe from cyber scams.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

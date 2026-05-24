@@ -1,0 +1,100 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // --- Global Safety Net ---
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Reusable helpers ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.keys().contains('email') && (
+          request.auth.token.email == "securevaultappofficial@gmail.com" || 
+          request.auth.token.email.matches('.*securevault.*')
+        )
+      );
+    }
+
+    function isValidUser(userId, data) {
+      return isValidId(userId)
+        && data.keys().hasAll(['userId', 'displayName', 'email', 'createdAt', 'lastLoginAt', 'noOfScans', 'threatsFound', 'safeJunkRemoved', 'scannedLinksCount'])
+        && data.keys().size() <= 12
+        && data.userId == userId
+        && data.displayName is string && data.displayName.size() <= 200
+        && data.email is string && data.email.size() <= 200 
+        && (data.email == request.auth.token.email || (request.auth.token.keys().contains('email') && request.auth.token.email.endsWith('@securevault.com')))
+        && (!data.keys().contains('photoURL') || data.photoURL == null || (data.photoURL is string && data.photoURL.size() <= 1000))
+        && data.lastLoginAt == request.time
+        && data.noOfScans is int && data.noOfScans >= 0
+        && data.threatsFound is int && data.threatsFound >= 0
+        && (data.safeJunkRemoved is int || data.safeJunkRemoved is float) && data.safeJunkRemoved >= 0
+        && data.scannedLinksCount is int && data.scannedLinksCount >= 0;
+    }
+
+    function isImmutableFieldsUnchanged(oldData, newData) {
+      return newData.createdAt == oldData.createdAt && newData.userId == oldData.userId;
+    }
+
+    // Public Sheets config rules for guest form submission syncs
+    match /sheets_config/{document} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Access permissions for Query Tickets (emergency help inquiries)
+    match /query_tickets/{ticketId} {
+      allow create: if true;
+      allow read, list: if isAdmin();
+    }
+
+    // Access permissions for Launch Waitlist Notifications
+    match /launch_notifications/{notificationId} {
+      allow create: if true;
+      allow read, list: if isAdmin();
+    }
+
+    // Nested fortress rules for users and user subcollections
+    match /users/{userId} {
+      allow get, create, update: if isOwner(userId);
+      allow delete: if false;
+
+      match /fixedIssues/{issueId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /aiSecurityAdviserChats/{chatId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /junkCleanHistory/{historyId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /linkScanHistory/{historyId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+  }
+}
