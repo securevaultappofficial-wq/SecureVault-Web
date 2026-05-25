@@ -29,6 +29,7 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
     { id: "trust", label: "Trust & Privacy" },
     { id: "scams", label: "Scam Safety" },
     { id: "ai-reports", label: "AI & Reports" },
+    { id: "blogs", label: "Blogs" },
     { id: "developer-portfolio", label: "Developer Portfolio" },
     { id: "download", label: "Coming Soon" },
     { id: "support", label: "Support & FAQ" },

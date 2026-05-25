@@ -44,6 +44,7 @@ jobs:
         run: |
           npm run build
           cp -R portfolio dist/portfolio
+          cp -R blog dist/blog
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
