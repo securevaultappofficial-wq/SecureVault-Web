@@ -44,7 +44,7 @@ export default function HomeView({ setPage }: HomeViewProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Hero Message text block */}
-            <div className="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left">
+            <div className="lg:col-span-6 space-y-6 md:space-y-8 text-center lg:text-left lg:max-w-2xl mx-auto lg:mx-0">
               
               <div className="inline-flex items-center gap-2.5 bg-cyan-500/10 border border-cyan-500/20 py-1.5 px-4 rounded-full text-cyber-cyan text-xs font-mono select-none">
                 <img 
@@ -56,9 +56,9 @@ export default function HomeView({ setPage }: HomeViewProps) {
                 <span className="font-semibold tracking-wider">SecureVault V1 Trust Campaign</span>
               </div>
 
-              <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight">
+              <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.02] drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]">
                 SecureVault V1
-                <span className="block mt-2 bg-gradient-to-r from-cyber-cyan via-cyber-green to-emerald-400 bg-clip-text text-transparent">
+                <span className="block mt-2 bg-gradient-to-r from-cyber-cyan via-emerald-400 to-white bg-clip-text text-transparent">
                   Smart Security. Simple Guidance.
                 </span>
               </h1>
@@ -100,7 +100,7 @@ export default function HomeView({ setPage }: HomeViewProps) {
             </div>
 
             {/* Right Hero Mobile Simulator Embeds */}
-            <div className="lg:col-span-5 flex justify-center w-full">
+            <div className="lg:col-span-6 flex justify-center w-full">
               <HeroScanner />
             </div>
 
