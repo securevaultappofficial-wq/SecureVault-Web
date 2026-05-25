@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Scam and fraud warning</title>
+  <desc id="desc">A digital fraud alert interface with warning cards and secure payment shield.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1"><stop stop-color="#fb7185"/><stop offset=".5" stop-color="#facc15"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="620" fill="#050816"/>
+  <path d="M0 165h1200M0 330h1200M0 495h1200M200 0v620M400 0v620M600 0v620M800 0v620M1000 0v620" stroke="#f43f5e" stroke-opacity=".12"/>
+  <g filter="url(#glow)">
+    <rect x="155" y="130" width="890" height="360" rx="34" fill="#0f172a" stroke="#fb7185" stroke-width="6"/>
+    <path d="M600 182l178 306H422L600 182z" fill="#450a0a" stroke="url(#g)" stroke-width="8"/>
+    <text x="600" y="390" text-anchor="middle" font-family="Inter, Arial" font-size="116" font-weight="900" fill="#fecaca">!</text>
+    <rect x="215" y="196" width="230" height="54" rx="16" fill="#111827" stroke="#fb7185" stroke-opacity=".5"/>
+    <rect x="755" y="196" width="230" height="54" rx="16" fill="#111827" stroke="#22d3ee" stroke-opacity=".5"/>
+    <rect x="215" y="370" width="230" height="54" rx="16" fill="#111827" stroke="#facc15" stroke-opacity=".5"/>
+    <rect x="755" y="370" width="230" height="54" rx="16" fill="#111827" stroke="#34d399" stroke-opacity=".5"/>
+  </g>
+  <text x="70" y="560" font-family="Inter, Arial" font-size="30" font-weight="800" fill="#e5eefb">Scam and Fraud Protection</text>
+  <text x="70" y="596" font-family="Inter, Arial" font-size="18" fill="#fda4af">UPI fraud • OTP scams • KYC messages • fake APKs • digital arrest awareness</text>
+</svg>

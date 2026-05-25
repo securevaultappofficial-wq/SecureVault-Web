@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Cybersecurity learning workspace</title>
+  <desc id="desc">A modern cybersecurity learning screen with terminal cards and network nodes.</desc>
+  <rect width="1200" height="620" fill="#020617"/>
+  <path d="M0 100h1200M0 200h1200M0 300h1200M0 400h1200M0 500h1200M160 0v620M320 0v620M480 0v620M640 0v620M800 0v620M960 0v620M1120 0v620" stroke="#22d3ee" stroke-opacity=".12"/>
+  <rect x="110" y="86" width="980" height="448" rx="34" fill="#0f172a" stroke="#334155" stroke-width="5"/>
+  <rect x="150" y="130" width="440" height="150" rx="22" fill="#020617" stroke="#22d3ee" stroke-opacity=".55"/>
+  <rect x="150" y="316" width="440" height="150" rx="22" fill="#020617" stroke="#34d399" stroke-opacity=".55"/>
+  <rect x="640" y="130" width="400" height="336" rx="22" fill="#020617" stroke="#a78bfa" stroke-opacity=".55"/>
+  <text x="190" y="188" font-family="Consolas, monospace" font-size="24" fill="#34d399">&gt; phishing meaning</text>
+  <text x="190" y="232" font-family="Consolas, monospace" font-size="22" fill="#94a3b8">fake login or message trap</text>
+  <text x="190" y="374" font-family="Consolas, monospace" font-size="24" fill="#22d3ee">&gt; malware meaning</text>
+  <text x="190" y="418" font-family="Consolas, monospace" font-size="22" fill="#94a3b8">harmful software behavior</text>
+  <circle cx="760" cy="250" r="60" fill="#111827" stroke="#22d3ee" stroke-width="8"/>
+  <circle cx="915" cy="250" r="60" fill="#111827" stroke="#34d399" stroke-width="8"/>
+  <circle cx="838" cy="365" r="60" fill="#111827" stroke="#a78bfa" stroke-width="8"/>
+  <path d="M815 250h40M790 300l35 42M890 300l-35 42" stroke="#64748b" stroke-width="6"/>
+  <text x="70" y="580" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#e5eefb">Cybersecurity for Beginners</text>
+</svg>

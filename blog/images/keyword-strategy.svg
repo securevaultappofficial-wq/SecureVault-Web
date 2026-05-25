@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">SecureVault keyword strategy dashboard</title>
+  <desc id="desc">A cyber SEO dashboard showing keyword groups for SecureVault.</desc>
+  <rect width="1200" height="620" fill="#020617"/>
+  <path d="M0 155h1200M0 310h1200M0 465h1200M240 0v620M480 0v620M720 0v620M960 0v620" stroke="#818cf8" stroke-opacity=".13"/>
+  <rect x="88" y="82" width="1024" height="456" rx="36" fill="#0f172a" stroke="#334155" stroke-width="4"/>
+  <g font-family="Inter, Arial" font-weight="800">
+    <rect x="145" y="155" width="260" height="82" rx="22" fill="#022c22" stroke="#34d399"/>
+    <text x="175" y="207" font-size="22" fill="#d1fae5">Android Security</text>
+    <rect x="470" y="155" width="260" height="82" rx="22" fill="#082f49" stroke="#22d3ee"/>
+    <text x="504" y="207" font-size="22" fill="#e0f2fe">AI Adviser</text>
+    <rect x="795" y="155" width="260" height="82" rx="22" fill="#450a0a" stroke="#fb7185"/>
+    <text x="835" y="207" font-size="22" fill="#ffe4e6">Scam Detector</text>
+    <rect x="145" y="305" width="260" height="82" rx="22" fill="#312e81" stroke="#a78bfa"/>
+    <text x="175" y="357" font-size="22" fill="#ede9fe">Link Protection</text>
+    <rect x="470" y="305" width="260" height="82" rx="22" fill="#422006" stroke="#facc15"/>
+    <text x="513" y="357" font-size="22" fill="#fef3c7">Fake APK</text>
+    <rect x="795" y="305" width="260" height="82" rx="22" fill="#0f172a" stroke="#64748b"/>
+    <text x="833" y="357" font-size="22" fill="#e2e8f0">Privacy Check</text>
+  </g>
+  <text x="88" y="585" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#e5eefb">SecureVault SEO and App Keywords</text>
+</svg>

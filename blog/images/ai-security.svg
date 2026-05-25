@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">AI cyber defense visualization</title>
+  <desc id="desc">A neon AI security shield with connected nodes on a dark cyber grid.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset=".5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <radialGradient id="r" cx="50%" cy="48%" r="60%">
+      <stop offset="0" stop-color="#1e40af" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#111827" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#020617"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="620" fill="url(#r)"/>
+  <path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M150 0v620M300 0v620M450 0v620M600 0v620M750 0v620M900 0v620M1050 0v620" stroke="#38bdf8" stroke-opacity=".12"/>
+  <g filter="url(#glow)" opacity=".95">
+    <path d="M600 122c84 58 172 78 264 82-12 172-82 285-264 354-182-69-252-182-264-354 92-4 180-24 264-82z" fill="#020617" stroke="url(#g)" stroke-width="10"/>
+    <path d="M460 318h280M600 194v248M505 230l190 176M695 230L505 406" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="600" cy="318" r="72" fill="#020617" stroke="#22d3ee" stroke-width="8"/>
+    <text x="600" y="336" text-anchor="middle" font-family="Inter, Arial" font-size="46" font-weight="800" fill="#e0f2fe">AI</text>
+  </g>
+  <g fill="#22d3ee">
+    <circle cx="236" cy="138" r="8"/><circle cx="964" cy="156" r="10"/><circle cx="206" cy="448" r="11"/><circle cx="1010" cy="470" r="7"/>
+  </g>
+  <text x="64" y="560" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#e5eefb">AI Security Adviser</text>
+  <text x="64" y="596" font-family="Inter, Arial" font-size="18" fill="#94a3b8">Scam checks, phishing detection, malware explanations, privacy guidance</text>
+</svg>
