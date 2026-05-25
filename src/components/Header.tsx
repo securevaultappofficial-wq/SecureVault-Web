@@ -29,6 +29,7 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
     { id: "trust", label: "Trust & Privacy" },
     { id: "scams", label: "Scam Safety" },
     { id: "ai-reports", label: "AI & Reports" },
+    { id: "developer-portfolio", label: "Developer Portfolio" },
     { id: "download", label: "Coming Soon" },
     { id: "support", label: "Support & FAQ" },
   ];
@@ -94,14 +95,14 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1.5">
+          <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative font-display text-sm tracking-wide px-3.5 py-2 rounded-lg font-medium transition-all duration-150 cursor-pointer ${
+                  className={`relative font-display text-xs xl:text-sm tracking-wide px-2.5 xl:px-3 py-2 rounded-lg font-medium transition-all duration-150 cursor-pointer whitespace-nowrap ${
                     isActive 
                       ? "text-cyber-cyan bg-cyan-500/5" 
                       : "text-gray-400 hover:text-white hover:bg-slate-900"

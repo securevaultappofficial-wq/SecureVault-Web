@@ -16,6 +16,7 @@ import Support from "./components/Support";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
 import AuthView from "./components/AuthView";
+import DeveloperPortfolio from "./components/DeveloperPortfolio";
 import { auth } from "./lib/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { motion, AnimatePresence } from "motion/react";
@@ -66,6 +67,8 @@ export default function App() {
         return <ComingSoon />;
       case "support":
         return <Support />;
+      case "developer-portfolio":
+        return <DeveloperPortfolio />;
       case "privacy":
         return <PrivacyPolicy />;
       case "terms":
