@@ -16,6 +16,11 @@ interface HomeViewProps {
 }
 
 export default function HomeView({ setPage }: HomeViewProps) {
+  const handleInternalLink = (event: React.MouseEvent<HTMLAnchorElement>, page: string) => {
+    event.preventDefault();
+    setPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   
   const handleExploreFeatures = () => {
     setPage("features");
@@ -66,6 +71,26 @@ export default function HomeView({ setPage }: HomeViewProps) {
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 SecureVault helps users scan device risks, detect suspicious installer files, check risky clipboard links, clean cache junk safely, and stay alert from digital scams with clear AI-powered explanations.
               </p>
+
+              <nav aria-label="SecureVault quick links" className="flex flex-wrap justify-center lg:justify-start gap-2.5">
+                {[
+                  { label: "Features", page: "features", href: "/?page=features" },
+                  { label: "Blog", page: "blogs", href: "/?page=blogs" },
+                  { label: "AI Security Adviser", page: "ai-reports", href: "/?page=ai-reports" },
+                  { label: "Link Protection", page: "features", href: "/?page=features" },
+                  { label: "Malware Scan", page: "features", href: "/?page=features" },
+                  { label: "Junk Cleaner", page: "features", href: "/?page=features" }
+                ].map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(event) => handleInternalLink(event, link.page)}
+                    className="rounded-full border border-cyan-500/20 bg-slate-950/70 px-3 py-1.5 text-xs font-mono text-gray-300 transition-colors hover:border-cyber-cyan hover:text-cyber-cyan"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
 
               {/* Action Buttons blocks */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
