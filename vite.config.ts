@@ -7,6 +7,18 @@ export default defineConfig(() => {
   return {
     base: '/',
     plugins: [react(), tailwindcss()],
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          features: path.resolve(__dirname, 'features.html'),
+          blog: path.resolve(__dirname, 'blog.html'),
+          scamProtection: path.resolve(__dirname, 'scam-protection.html'),
+          aiSecurityAdviser: path.resolve(__dirname, 'ai-security-adviser.html'),
+          developerPortfolio: path.resolve(__dirname, 'developer-portfolio.html'),
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

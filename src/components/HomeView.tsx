@@ -74,12 +74,12 @@ export default function HomeView({ setPage }: HomeViewProps) {
 
               <nav aria-label="SecureVault quick links" className="flex flex-wrap justify-center lg:justify-start gap-2.5">
                 {[
-                  { label: "Features", page: "features", href: "/?page=features" },
-                  { label: "Blog", page: "blogs", href: "/?page=blogs" },
-                  { label: "AI Security Adviser", page: "ai-reports", href: "/?page=ai-reports" },
-                  { label: "Link Protection", page: "features", href: "/?page=features" },
-                  { label: "Malware Scan", page: "features", href: "/?page=features" },
-                  { label: "Junk Cleaner", page: "features", href: "/?page=features" }
+                  { label: "Features", page: "features", href: "/features.html" },
+                  { label: "Blog", page: "blogs", href: "/blog.html" },
+                  { label: "AI Security Adviser", page: "ai-reports", href: "/ai-security-adviser.html" },
+                  { label: "Link Protection", page: "features", href: "/features.html" },
+                  { label: "Malware Scan", page: "features", href: "/features.html" },
+                  { label: "Junk Cleaner", page: "features", href: "/features.html" }
                 ].map((link) => (
                   <a
                     key={link.label}

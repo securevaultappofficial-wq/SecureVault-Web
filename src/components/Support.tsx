@@ -642,7 +642,7 @@ export default function Support() {
 
                         <button
                           onClick={() => {
-                            window.open(window.location.origin + "/?page=support", "_blank");
+                            window.open(window.location.origin + "/#support", "_blank");
                           }}
                           className="w-full text-center py-3 bg-slate-900 border border-gray-800 hover:border-cyan-500/50 text-gray-300 hover:text-white font-semibold text-xs rounded-xl cursor-pointer transition-all font-mono flex items-center justify-center gap-1.5"
                         >

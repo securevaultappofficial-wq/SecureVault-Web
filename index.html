@@ -5,13 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-adsense-account" content="ca-pub-3203946703005160" />
     <title>SecureVault - AI Powered Android Security App</title>
-    <meta name="description" content="SecureVault helps users scan malware, detect scam links, understand cyber risks, clean junk files, and get simple AI-powered security guidance." />
+    <meta name="description" content="SecureVault is an AI-powered Android security app built to help users scan malware, detect scam links, understand cyber risks, clean junk files, and improve digital safety." />
+    <link rel="canonical" href="https://www.securevaultapp.com/" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:title" content="SecureVault - AI Powered Android Security App" />
+    <meta property="og:description" content="SecureVault is an AI-powered Android security app built to help users scan malware, detect scam links, understand cyber risks, clean junk files, and improve digital safety." />
+    <meta property="og:url" content="https://www.securevaultapp.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.securevaultapp.com/favicon.png" />
+    <script>
+      (function () {
+        var redirects = {
+          features: "/features.html",
+          blogs: "/blog.html",
+          scams: "/scam-protection.html",
+          "ai-reports": "/ai-security-adviser.html",
+          "developer-portfolio": "/developer-portfolio.html"
+        };
+        var page = new URLSearchParams(window.location.search).get("page");
+        if (page && redirects[page]) {
+          window.location.replace(redirects[page]);
+        }
+      })();
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3203946703005160" crossorigin="anonymous"></script>
-    <script type="module" crossorigin src="/assets/index-ayQYFH6E.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dkn_pL6d.css">
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

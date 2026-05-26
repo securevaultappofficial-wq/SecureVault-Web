@@ -22,8 +22,29 @@ import { auth } from "./lib/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { motion, AnimatePresence } from "motion/react";
 
+const pagePathMap: Record<string, string> = {
+  home: "/",
+  features: "/features.html",
+  blogs: "/blog.html",
+  scams: "/scam-protection.html",
+  "ai-reports": "/ai-security-adviser.html",
+  "developer-portfolio": "/developer-portfolio.html",
+};
+
+const pathPageMap: Record<string, string> = Object.fromEntries(
+  Object.entries(pagePathMap).map(([page, path]) => [path, page])
+);
+
+function getPageFromLocation() {
+  const pathPage = pathPageMap[window.location.pathname];
+  if (pathPage) return pathPage;
+
+  const params = new URLSearchParams(window.location.search);
+  return params.get("page") || window.location.hash.replace("#", "") || "home";
+}
+
 export default function App() {
-  const [page, setPageState] = useState<string>("home");
+  const [page, setPageState] = useState<string>(() => getPageFromLocation());
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -36,20 +57,19 @@ export default function App() {
     return () => unsubscribe();
   }, []);
 
-  // Load routing state from URL query parameter for bookmarks and back/forward history alignment
+  // Keep routing state aligned with browser back/forward on clean static URLs.
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const initialPage = params.get("page");
-    if (initialPage) {
-      setPageState(initialPage);
-    }
+    const handlePopState = () => setPageState(getPageFromLocation());
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
   const setPage = (newPage: string) => {
     setPageState(newPage);
-    const url = new URL(window.location.href);
-    url.searchParams.set("page", newPage);
-    window.history.pushState({}, "", url.toString());
+    const nextPath = pagePathMap[newPage] || `/#${encodeURIComponent(newPage)}`;
+    if (window.location.pathname + window.location.search + window.location.hash !== nextPath) {
+      window.history.pushState({}, "", nextPath);
+    }
   };
 
   const renderActiveView = () => {
