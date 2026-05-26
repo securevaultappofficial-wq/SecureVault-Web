@@ -24,15 +24,13 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
   const resolvedUser = getResolvedUser(user);
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "features", label: "Features V1" },
+    { id: "features", label: "Products" },
     { id: "trust", label: "Trust & Privacy" },
     { id: "scams", label: "Scam Safety" },
     { id: "ai-reports", label: "AI & Reports" },
     { id: "blogs", label: "Blogs" },
     { id: "developer-portfolio", label: "Developer Portfolio" },
     { id: "download", label: "Coming Soon" },
-    { id: "support", label: "Support & FAQ" },
   ];
 
 
@@ -66,11 +64,11 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
 
       {/* Primary Header */}
       <header className="bg-slate-950/80 border-b border-gray-800 backdrop-blur-lg sticky top-[33px] sm:top-[37px] z-40">
-        <div id="nav-container" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+        <div id="nav-container" className="w-full max-w-none px-3 sm:px-4 lg:px-5 2xl:px-8 h-18 flex items-center justify-between gap-3">
           
           {/* Logo Brand */}
           <div 
-            className="flex items-center gap-2.5 cursor-pointer group"
+            className="flex shrink-0 items-center gap-2.5 cursor-pointer group"
             onClick={() => handleNavClick("home")}
           >
             <div className="relative">
@@ -91,19 +89,25 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
                 </span>
                 <span className="bg-cyan-500/10 text-[10px] font-mono text-cyber-cyan border border-cyan-500/20 px-1.5 py-0.2 rounded">V1</span>
               </div>
-              <p className="text-[10px] text-gray-400 font-mono tracking-widest hidden sm:block">SMART SECURITY. SIMPLE GUIDANCE.</p>
+              <p className="hidden sm:block text-[10px] text-gray-400 font-mono tracking-widest">SMART SECURITY. SIMPLE GUIDANCE.</p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex min-w-0 flex-1 items-center justify-center gap-0.5 overflow-hidden">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;
+              const responsiveVisibility =
+                item.id === "developer-portfolio"
+                  ? "hidden 2xl:inline-flex"
+                  : item.id === "download" || item.id === "support"
+                    ? "hidden xl:inline-flex"
+                    : "inline-flex";
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative font-display text-xs xl:text-sm tracking-wide px-2.5 xl:px-3 py-2 rounded-lg font-medium transition-all duration-150 cursor-pointer whitespace-nowrap ${
+                  className={`relative ${responsiveVisibility} items-center font-display text-xs 2xl:text-sm tracking-wide px-2 xl:px-2.5 2xl:px-3 py-2 rounded-lg font-medium transition-all duration-150 cursor-pointer whitespace-nowrap ${
                     isActive 
                       ? "text-cyber-cyan bg-cyan-500/5" 
                       : "text-gray-400 hover:text-white hover:bg-slate-900"
@@ -123,41 +127,41 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
           </nav>
 
           {/* Call to Action Button */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex shrink-0 items-center gap-2">
             {loading ? (
               <div className="w-8 h-8 rounded-full border border-slate-800 animate-pulse bg-slate-900"></div>
             ) : resolvedUser ? (
               <button
                 onClick={() => handleNavClick("auth")}
-                className="flex items-center gap-2 bg-slate-900/90 border border-cyan-500/30 hover:border-cyber-cyan text-white text-xs font-mono py-1.5 px-3 rounded-full hover:bg-slate-950 transition-all cursor-pointer shadow-[0_0_12px_rgba(6,182,212,0.1)]"
+                className="flex max-w-[180px] 2xl:max-w-[240px] items-center gap-2 bg-slate-900/90 border border-cyan-500/30 hover:border-cyber-cyan text-white text-xs font-mono py-1.5 px-2.5 2xl:px-3 rounded-full hover:bg-slate-950 transition-all cursor-pointer shadow-[0_0_12px_rgba(6,182,212,0.1)]"
               >
                 {resolvedUser.photoURL ? (
                   <img src={resolvedUser.photoURL} alt="Profile" referrerPolicy="no-referrer" className="w-5.5 h-5.5 rounded-full border border-cyber-cyan/50" />
                 ) : (
                   <User className="w-3.5 h-3.5 text-cyber-cyan" />
                 )}
-                <span className="whitespace-nowrap">{resolvedUser.displayName || "Account"}</span>
+                <span className="min-w-0 truncate whitespace-nowrap">{resolvedUser.displayName || "Account"}</span>
               </button>
             ) : (
               <button
                 onClick={() => handleNavClick("auth")}
-                className="flex items-center gap-1.5 bg-slate-950 hover:bg-cyan-950/25 text-cyber-cyan hover:text-white border border-cyan-500/30 hover:border-cyber-cyan text-xs font-mono font-bold px-3.5 py-1.5 rounded-full transition-all cursor-pointer"
+                className="flex shrink-0 items-center gap-1.5 bg-slate-950 hover:bg-cyan-950/25 text-cyber-cyan hover:text-white border border-cyan-500/30 hover:border-cyber-cyan text-xs font-mono font-bold px-3 py-1.5 rounded-full transition-all cursor-pointer"
               >
                 <LogIn className="w-3.5 h-3.5" />
                 <span>Sign In</span>
               </button>
             )}
 
-            <button 
-              onClick={() => handleNavClick("download")}
-              className="bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 hover:from-cyan-500/20 hover:to-emerald-500/20 text-white font-mono text-xs font-semibold px-4 py-2 rounded-lg border border-cyan-500/30 hover:border-cyber-cyan/60 glow-cyan transition-all duration-300 cursor-pointer"
+            <button
+              onClick={() => handleNavClick("ai-reports")}
+              className="shrink-0 bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 hover:from-cyan-500/20 hover:to-emerald-500/20 text-white font-mono text-xs font-semibold px-3 2xl:px-4 py-2 rounded-lg border border-cyan-500/30 hover:border-cyber-cyan/60 glow-cyan transition-all duration-300 cursor-pointer"
             >
-              Join Early Waitlist
+              Try SecureVault AI
             </button>
           </div>
 
           {/* Mobile Action toggle */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-gray-400 hover:text-white p-2 rounded-lg bg-slate-900 border border-gray-800"
@@ -174,7 +178,7 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-slate-950 border-b border-gray-800"
+              className="lg:hidden bg-slate-950 border-b border-gray-800"
             >
               <div className="px-4 pt-2 pb-6 space-y-1.5">
                 {navItems.map((item) => {
@@ -225,10 +229,10 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
                   )}
 
                   <button
-                    onClick={() => handleNavClick("download")}
+                    onClick={() => handleNavClick("ai-reports")}
                     className="w-full text-center bg-gradient-to-r from-cyber-cyan to-cyber-green text-black font-semibold text-sm py-2.5 rounded-lg active:scale-95 transition-all shadow-md shadow-cyan-500/15 cursor-pointer"
                   >
-                    Join Early Waitlist
+                    Try SecureVault AI
                   </button>
                 </div>
               </div>

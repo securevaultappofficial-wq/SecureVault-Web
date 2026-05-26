@@ -36,15 +36,15 @@ export default function HomeView({ setPage }: HomeViewProps) {
     <div className="bg-cyber-bg text-gray-300 font-sans selection:bg-cyan-500/30 selection:text-white">
       
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-12 pb-20 md:py-28 border-b border-gray-900 cyber-grid">
+      <section className="relative overflow-hidden pt-8 pb-12 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-16 border-b border-gray-900 cyber-grid">
         <div className="absolute top-1/4 left-1/12 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl opacity-50"></div>
         <div className="absolute bottom-1/4 right-1/12 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl opacity-50"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start">
             
             {/* Left Hero Message text block */}
-            <div className="lg:col-span-6 space-y-6 md:space-y-8 text-center lg:text-left lg:max-w-2xl mx-auto lg:mx-0">
+            <div className="relative z-10 lg:col-span-6 space-y-5 md:space-y-6 text-center lg:text-left lg:max-w-2xl mx-auto lg:mx-0 lg:pt-3">
               
               <div className="inline-flex items-center gap-2.5 bg-cyan-500/10 border border-cyan-500/20 py-1.5 px-4 rounded-full text-cyber-cyan text-xs font-mono select-none">
                 <img 
@@ -56,9 +56,9 @@ export default function HomeView({ setPage }: HomeViewProps) {
                 <span className="font-semibold tracking-wider">SecureVault V1 Trust Campaign</span>
               </div>
 
-              <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.02] drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]">
+              <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl xl:text-[4.65rem] text-white tracking-tight leading-[1.04] [text-shadow:0_4px_22px_rgba(0,0,0,0.9),0_0_34px_rgba(255,255,255,0.14)]">
                 SecureVault V1
-                <span className="block mt-2 bg-gradient-to-r from-cyber-cyan via-emerald-400 to-white bg-clip-text text-transparent">
+                <span className="block mt-2 text-[#b8ffe8] [text-shadow:0_4px_24px_rgba(0,0,0,0.95),0_0_30px_rgba(20,255,177,0.42)]">
                   Smart Security. Simple Guidance.
                 </span>
               </h1>
@@ -100,7 +100,7 @@ export default function HomeView({ setPage }: HomeViewProps) {
             </div>
 
             {/* Right Hero Mobile Simulator Embeds */}
-            <div className="lg:col-span-6 flex justify-center w-full">
+            <div className="lg:col-span-6 flex justify-center lg:justify-end w-full">
               <HeroScanner />
             </div>
 

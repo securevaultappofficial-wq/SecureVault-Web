@@ -57,11 +57,11 @@ export default function Footer({ setPage }: FooterProps) {
             <h3 className="font-display text-white text-sm font-semibold tracking-wider uppercase mb-4">Official Sections</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
               <button onClick={() => handleNavigate("home")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">1. Home</button>
-              <button onClick={() => handleNavigate("features")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">2. Features V1</button>
+              <button onClick={() => handleNavigate("features")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">2. Products</button>
               <button onClick={() => handleNavigate("trust")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">3. Trust & Privacy</button>
               <button onClick={() => handleNavigate("scams")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">4. Scam Safety</button>
-              <button onClick={() => handleNavigate("ai-reports")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">5. AI & Reports</button>
-              <button onClick={() => handleNavigate("download")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">6. Coming Soon</button>
+              <button onClick={() => handleNavigate("ai-reports")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">5. Try SecureVault AI</button>
+              <button onClick={() => handleNavigate("download")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">6. Join Early Waitlist</button>
               <button onClick={() => handleNavigate("support")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">7. Support & FAQ</button>
               <button onClick={() => handleNavigate("privacy")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer text-xs underline">8. Privacy Policy</button>
               <button onClick={() => handleNavigate("terms")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer text-xs underline">9. Terms of Use</button>
@@ -102,7 +102,8 @@ export default function Footer({ setPage }: FooterProps) {
           <div className="flex items-center gap-4 text-gray-500 divide-x divide-gray-800">
             <button onClick={() => handleNavigate("privacy")} className="hover:text-gray-300 cursor-pointer">Privacy Policy</button>
             <button onClick={() => handleNavigate("terms")} className="pl-4 hover:text-gray-300 cursor-pointer">Terms of Use</button>
-            <button onClick={() => handleNavigate("support")} className="pl-4 hover:text-gray-300 cursor-pointer">Support</button>
+            <button onClick={() => handleNavigate("support")} className="pl-4 hover:text-gray-300 cursor-pointer">Support & FAQ</button>
+            <button onClick={() => handleNavigate("download")} className="pl-4 hover:text-gray-300 cursor-pointer">Join Early Waitlist</button>
           </div>
         </div>
 
