@@ -10,12 +10,12 @@ import {
 } from "firebase/auth";
 import { doc, onSnapshot, collection, query, orderBy } from "firebase/firestore";
 import { 
-  Shield, Lock, AlertTriangle, Key, LogOut, CheckCircle2, 
+  Lock, AlertTriangle, Key, LogOut, CheckCircle2, 
   CloudLightning, Calendar, Mail, UserPlus, LogIn, Database, 
   RefreshCcw, Eye, EyeOff, Sparkles, Binary, Trash2, Link2, FileText, X, ChevronRight, Loader2
 } from "lucide-react";
 import { motion } from "motion/react";
-import appLogo from "../assets/images/secure_vault_logo_1779581755129.png";
+import { secureVaultIcon48, secureVaultIconSrcSet } from "../lib/brandAssets";
 import { getResolvedUser, MOCK_GOOGLE_ACCOUNTS } from "../lib/mockAccounts";
 
 interface AuthViewProps {
@@ -309,7 +309,7 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
       <div className="min-h-[70vh] flex flex-col items-center justify-center font-sans bg-cyber-bg">
         <div className="relative">
           <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl animate-pulse"></div>
-          <Shield className="w-12 h-12 text-cyber-cyan animate-spin relative" />
+          <Lock className="w-12 h-12 text-cyber-cyan animate-spin relative" />
         </div>
         <p className="mt-4 text-xs font-mono text-gray-400 tracking-widest uppercase">Verifying Security Session...</p>
       </div>
@@ -431,7 +431,7 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
             <div className="bg-slate-900/60 border border-cyan-500/10 rounded-2xl p-5 hover:border-cyan-500/30 transition-all flex flex-col justify-between">
               <div className="flex justify-between items-start">
                 <div className="p-2 bg-red-500/10 rounded-xl text-red-400">
-                  <Shield className="w-5 h-5" />
+                  <Lock className="w-5 h-5" />
                 </div>
                 <span className="text-[9px] font-mono text-gray-500 uppercase">TELEMETRY_B</span>
               </div>
@@ -502,7 +502,7 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
                   : "text-gray-400 hover:text-white"
               }`}
             >
-              <Shield className="w-3.5 h-3.5" />
+              <Lock className="w-3.5 h-3.5" />
               <span>Vulnerabilities ({fixedIssues.length})</span>
             </button>
             
@@ -552,7 +552,7 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
                 </div>
                 {fixedIssues.length === 0 ? (
                   <div className="bg-slate-950 rounded-2xl p-8 border border-gray-800 text-center flex flex-col items-center justify-center gap-3">
-                    <Shield className="w-8 h-8 text-gray-600 animate-pulse" />
+                    <Lock className="w-8 h-8 text-gray-400 animate-pulse" />
                     <p className="text-xs text-gray-400 max-w-sm leading-relaxed">
                       No active cloud database records yet. Trigger a digital security scan inside the simulator to automatically record patched vulnerabilities to Firestore!
                     </p>
@@ -926,9 +926,14 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
             <div className="absolute inset-0 bg-cyan-400/20 rounded-2xl blur-md"></div>
             <div className="relative bg-black border border-cyan-500/30 w-14 h-14 rounded-2xl overflow-hidden flex items-center justify-center">
               <img 
-                src={appLogo} 
-                alt="SecureVault Icon" 
+                src={secureVaultIcon48}
+                srcSet={secureVaultIconSrcSet}
+                width={40}
+                height={40}
+                alt="SecureVault app icon"
                 className="w-10 h-10 object-cover" 
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -1054,7 +1059,7 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
             {signingIn ? (
               <span className="animate-spin text-cyber-cyan font-bold block">⚡</span>
             ) : (
-              <Shield className="w-3.5 h-3.5 text-cyber-cyan" />
+              <Lock className="w-3.5 h-3.5 text-cyber-cyan" />
             )}
             <span>{signingIn ? "Locking Session..." : authMethod === "login" ? "Email Login" : "Register Credentials"}</span>
           </button>
@@ -1117,9 +1122,14 @@ export default function AuthView({ user, loading, setPage }: AuthViewProps) {
               <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-md"></div>
               <div className="relative bg-[#0d1527] border border-cyan-500/30 w-11 h-11 rounded-full overflow-hidden flex items-center justify-center">
                 <img 
-                  src={appLogo} 
-                  alt="SecureVault Icon" 
+                  src={secureVaultIcon48}
+                  srcSet={secureVaultIconSrcSet}
+                  width={28}
+                  height={28}
+                  alt="SecureVault app icon"
                   className="w-7 h-7 object-cover" 
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
               </div>

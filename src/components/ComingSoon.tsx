@@ -6,10 +6,10 @@
 import React, { useState, useEffect } from "react";
 import { 
   Megaphone, Heart, Sparkles, Check, Smartphone, 
-  ChevronRight, Calendar, Mail, User, ShieldAlert, Loader2, FileSpreadsheet
+  ChevronRight, Calendar, Mail, User, AlertTriangle, Loader2, FileSpreadsheet
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import appLogo from "../assets/images/secure_vault_logo_1779581755129.png";
+import { secureVaultIcon48, secureVaultIconSrcSet } from "../lib/brandAssets";
 import { 
   saveLaunchNotificationRow, 
   connectGoogleSheets, 
@@ -136,9 +136,14 @@ export default function ComingSoon() {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2.5 bg-cyan-400/10 border border-cyan-400/20 py-1.5 px-4 rounded-full text-cyber-cyan text-xs font-mono select-none">
               <img 
-                src={appLogo} 
-                alt="SecureVault Logo" 
+                src={secureVaultIcon48}
+                srcSet={secureVaultIconSrcSet}
+                width={16}
+                height={16}
+                alt="SecureVault app icon"
                 className="w-4 h-4 rounded-md object-cover border border-cyan-500/30" 
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
               <span className="font-semibold tracking-wider">Launch Tracker: V1 Under Construction</span>
@@ -170,7 +175,7 @@ export default function ComingSoon() {
 
             {/* Safety Warning Notice from prompt */}
             <div className="bg-[#0b0f16] border border-gray-800 p-5 rounded-2xl flex gap-3.5 items-start max-w-xl text-xs">
-              <ShieldAlert className="w-5 h-5 text-cyber-cyan flex-shrink-0 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-cyber-cyan flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-white block mb-0.5 uppercase tracking-wide font-display text-[11px]">Download Authenticity warning:</strong>
                 <p className="text-gray-400 leading-relaxed font-sans">

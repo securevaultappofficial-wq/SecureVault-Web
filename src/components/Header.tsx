@@ -4,11 +4,11 @@
  */
 
 import React, { useState } from "react";
-import { Shield, Menu, X, Phone, Megaphone } from "lucide-react";
+import { Menu, X, Phone, Megaphone } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import appLogo from "../assets/images/secure_vault_logo_1779581755129.png";
+import { secureVaultIcon48, secureVaultIconSrcSet } from "../lib/brandAssets";
 
-import { User as FirebaseUser } from "firebase/auth";
+import type { User as FirebaseUser } from "firebase/auth";
 import { User, LogIn, Key } from "lucide-react";
 import { getResolvedUser } from "../lib/mockAccounts";
 
@@ -74,10 +74,14 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
             <div className="relative">
               <div className="absolute inset-0 bg-cyan-400/20 rounded-lg blur-md group-hover:bg-cyan-400/35 transition-all"></div>
               <div className="relative bg-black border border-cyan-500/40 w-10 h-10 rounded-xl overflow-hidden group-hover:border-cyber-green transition-all duration-300 flex items-center justify-center">
-                <img 
-                  src={appLogo} 
-                  alt="SecureVault Icon" 
+                <img
+                  src={secureVaultIcon48}
+                  srcSet={secureVaultIconSrcSet}
+                  width={40}
+                  height={40}
+                  alt="SecureVault app icon"
                   className="w-full h-full object-cover" 
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -164,6 +168,8 @@ export default function Header({ currentPage, setPage, user, loading }: HeaderPr
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
               className="text-gray-400 hover:text-white p-2 rounded-lg bg-slate-900 border border-gray-800"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { 
-  ShieldCheck, ShieldX, Database, Lock, Eye, CheckCircle2, 
+  CheckCircle2 as ShieldCheck, XCircle as ShieldX, Database, Lock, Eye, CheckCircle2, 
   HelpCircle, EyeOff, KeyRound, Smartphone, AlertTriangle, Users
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -41,7 +41,7 @@ export default function TrustPrivacy() {
         {/* Headings */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="font-display font-medium text-4xl tracking-tight text-white sm:text-5xl">
-            Our <span className="text-cyber-green">Trust & Privacy</span> Shield
+            Our <span className="text-cyber-green">Trust & Privacy</span> Promise
           </h1>
           <p className="mt-4 text-base text-gray-400 leading-relaxed font-sans">
             Highly professional cybersecurity means zero deception. We do not use fear tactics. We don't ask you for permissions we don't need, and we never make false promises.

@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { 
-  Sparkles, FileText, ShieldAlert, Binary, Link2, 
+  Sparkles, FileText, AlertTriangle as ShieldAlert, Binary, Link2, 
   Trash2, HelpCircle, Loader2, RefreshCw, AlertTriangle, Play 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from "react";
-import HeroScanner from "./HeroScanner";
+import React, { Suspense, lazy } from "react";
 import { 
-  Shield, AlertTriangle, Battery, Trash2, Link2, Sparkles, 
-  FileText, ArrowRight, UserCheck, CheckCircle2, User, HelpCircle, Heart, Lock 
+  Lock, AlertTriangle, Battery, Trash2, Link2, Sparkles, 
+  FileText, ArrowRight, UserCheck, CheckCircle2, User, HelpCircle, Heart
 } from "lucide-react";
-import appLogo from "../assets/images/secure_vault_logo_1779581755129.png";
+import { secureVaultIcon48, secureVaultIconSrcSet } from "../lib/brandAssets";
+
+const HeroScanner = lazy(() => import("./HeroScanner"));
 
 interface HomeViewProps {
   setPage: (page: string) => void;
@@ -53,9 +54,13 @@ export default function HomeView({ setPage }: HomeViewProps) {
               
               <div className="inline-flex items-center gap-2.5 bg-cyan-500/10 border border-cyan-500/20 py-1.5 px-4 rounded-full text-cyber-cyan text-xs font-mono select-none">
                 <img 
-                  src={appLogo} 
-                  alt="SecureVault Logo" 
+                  src={secureVaultIcon48}
+                  srcSet={secureVaultIconSrcSet}
+                  width={20}
+                  height={20}
+                  alt="SecureVault app icon"
                   className="w-5 h-5 rounded-md object-cover border border-cyan-500/30 shadow-[0_0_8px_rgba(0,212,255,0.3)]" 
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
                 <span className="font-semibold tracking-wider">SecureVault V1 Trust Campaign</span>
@@ -126,7 +131,16 @@ export default function HomeView({ setPage }: HomeViewProps) {
 
             {/* Right Hero Mobile Simulator Embeds */}
             <div className="lg:col-span-6 flex justify-center lg:justify-end w-full">
-              <HeroScanner />
+              <Suspense
+                fallback={
+                  <div
+                    className="w-full max-w-[300px] sm:max-w-[320px] lg:max-w-[330px] xl:max-w-[340px] min-h-[645px]"
+                    aria-hidden="true"
+                  />
+                }
+              >
+                <HeroScanner />
+              </Suspense>
             </div>
 
           </div>
@@ -218,7 +232,7 @@ export default function HomeView({ setPage }: HomeViewProps) {
               {
                 title: "Malware Risk Check",
                 desc: "Scans Download folders pattern matrices to locate unverified APK installers posing Trojan elements.",
-                icon: <Shield className="w-5 h-5" />
+                icon: <Lock className="w-5 h-5" />
               },
               {
                 title: "Safe Junk Cleaner",
@@ -317,7 +331,7 @@ export default function HomeView({ setPage }: HomeViewProps) {
                 <div className="w-8 h-8 rounded-full bg-emerald-500/10 text-cyber-green border border-emerald-500/15 flex items-center justify-center mb-3 text-xs font-mono">
                   ✓
                 </div>
-                <h4 className="font-display font-bold text-white text-sm mb-1.5">{badgeItem.badge}</h4>
+                <h3 className="font-display font-bold text-white text-sm mb-1.5">{badgeItem.badge}</h3>
                 <p className="text-gray-400 text-xs leading-relaxed font-sans">{badgeItem.desc}</p>
               </div>
             ))}
@@ -352,7 +366,7 @@ export default function HomeView({ setPage }: HomeViewProps) {
                     <User className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-white text-sm font-semibold tracking-wide">Saathvik Bonakurthi</h4>
+                    <h3 className="text-white text-sm font-semibold tracking-wide">Saathvik Bonakurthi</h3>
                     <span className="text-[10px] text-gray-500 font-mono block">Student Developer & Digital Safety Campaigner</span>
                   </div>
                 </div>

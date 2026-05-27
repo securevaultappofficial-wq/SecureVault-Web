@@ -3,24 +3,24 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
-import FeaturesView from "./components/FeaturesView";
-import TrustPrivacy from "./components/TrustPrivacy";
-import ScamSafety from "./components/ScamSafety";
-import AiReportsView from "./components/AiReportsView";
-import ComingSoon from "./components/ComingSoon";
-import Support from "./components/Support";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import TermsOfUse from "./components/TermsOfUse";
-import AuthView from "./components/AuthView";
-import DeveloperPortfolio from "./components/DeveloperPortfolio";
-import BlogView from "./components/BlogView";
-import { auth } from "./lib/firebase";
-import { onAuthStateChanged, User } from "firebase/auth";
+import type { User } from "firebase/auth";
 import { motion, AnimatePresence } from "motion/react";
+
+const FeaturesView = lazy(() => import("./components/FeaturesView"));
+const TrustPrivacy = lazy(() => import("./components/TrustPrivacy"));
+const ScamSafety = lazy(() => import("./components/ScamSafety"));
+const AiReportsView = lazy(() => import("./components/AiReportsView"));
+const ComingSoon = lazy(() => import("./components/ComingSoon"));
+const Support = lazy(() => import("./components/Support"));
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("./components/TermsOfUse"));
+const AuthView = lazy(() => import("./components/AuthView"));
+const DeveloperPortfolio = lazy(() => import("./components/DeveloperPortfolio"));
+const BlogView = lazy(() => import("./components/BlogView"));
 
 const pagePathMap: Record<string, string> = {
   home: "/",
@@ -43,18 +43,42 @@ function getPageFromLocation() {
   return params.get("page") || window.location.hash.replace("#", "") || "home";
 }
 
+function runWhenIdle(callback: () => void) {
+  if (typeof globalThis.requestIdleCallback === "function") {
+    globalThis.requestIdleCallback(callback, { timeout: 3000 });
+  } else {
+    globalThis.setTimeout(callback, 3000);
+  }
+}
+
 export default function App() {
   const [page, setPageState] = useState<string>(() => getPageFromLocation());
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Synchronize Google Auth session state across turns
+  // Load Firebase Auth after first paint so it cannot block the first screen.
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+    let unsubscribe: undefined | (() => void);
+    let cancelled = false;
+
+    runWhenIdle(() => {
+      Promise.all([import("./lib/firebase"), import("firebase/auth")])
+        .then(([firebase, authModule]) => {
+          if (cancelled) return;
+          unsubscribe = authModule.onAuthStateChanged(firebase.auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+          });
+        })
+        .catch(() => {
+          if (!cancelled) setLoading(false);
+        });
     });
-    return () => unsubscribe();
+
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, []);
 
   // Keep routing state aligned with browser back/forward on clean static URLs.
@@ -121,7 +145,9 @@ export default function App() {
             transition={{ duration: 0.22, ease: "easeOut" }}
             className="w-full h-full"
           >
-            {renderActiveView()}
+            <Suspense fallback={<div className="min-h-[60vh] bg-cyber-bg" aria-label="Loading section" />}>
+              {renderActiveView()}
+            </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>

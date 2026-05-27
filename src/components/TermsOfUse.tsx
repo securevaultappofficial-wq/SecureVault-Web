@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Info, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { Info, AlertTriangle as ShieldAlert, CheckCircle2 } from "lucide-react";
 
 export default function TermsOfUse() {
   const lastUpdated = "May 24, 2026";

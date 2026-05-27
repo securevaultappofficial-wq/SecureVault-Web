@@ -7,13 +7,13 @@
     <title>SecureVault - AI Powered Android Security App</title>
     <meta name="description" content="SecureVault is an AI-powered Android security app built to help users scan malware, detect scam links, understand cyber risks, clean junk files, and improve digital safety." />
     <link rel="canonical" href="https://www.securevaultapp.com/" />
-    <link rel="icon" type="image/png" href="/assets/secure_vault_logo_1779581755129-C9e_6vdN.png" />
+    <link rel="icon" type="image/webp" href="/assets/securevault-icon-48.webp" />
+    <link rel="alternate icon" type="image/png" href="/assets/securevault-icon-48.png" />
     <meta property="og:title" content="SecureVault - AI Powered Android Security App" />
     <meta property="og:description" content="SecureVault is an AI-powered Android security app built to help users scan malware, detect scam links, understand cyber risks, clean junk files, and improve digital safety." />
     <meta property="og:url" content="https://www.securevaultapp.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.securevaultapp.com/assets/secure_vault_logo_1779581755129-C9e_6vdN.png" />
-    <link rel="stylesheet" href="/assets/main-CKb4t6KL.css" />
+    <meta property="og:image" content="https://www.securevaultapp.com/assets/securevault-og-512.png" />
     <script>
       (function () {
         var redirects = {
@@ -29,17 +29,37 @@
         }
       })();
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3203946703005160" crossorigin="anonymous"></script>
+    <script>
+      window.runWhenIdle = window.runWhenIdle || function (callback) {
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(callback, { timeout: 4000 });
+        } else {
+          setTimeout(callback, 4000);
+        }
+      };
+      window.addEventListener("load", function () {
+        var loadAdsOnce = function () {
+          window.runWhenIdle(function () {
+            if (document.querySelector('script[data-securevault-adsense="true"]')) return;
+            var script = document.createElement("script");
+            script.async = true;
+            script.crossOrigin = "anonymous";
+            script.dataset.securevaultAdsense = "true";
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3203946703005160";
+            document.head.appendChild(script);
+          });
+          window.removeEventListener("scroll", loadAdsOnce);
+          window.removeEventListener("pointerdown", loadAdsOnce);
+          window.removeEventListener("keydown", loadAdsOnce);
+        };
+        window.addEventListener("scroll", loadAdsOnce, { passive: true, once: true });
+        window.addEventListener("pointerdown", loadAdsOnce, { passive: true, once: true });
+        window.addEventListener("keydown", loadAdsOnce, { once: true });
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script type="module">
-      setTimeout(function () {
-        if (!document.getElementById("securevault-root")) {
-          import(/* @vite-ignore */ "/assets/main-x4VTqVWz.js");
-        }
-      }, 400);
-    </script>
   </body>
 </html>

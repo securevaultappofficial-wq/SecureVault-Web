@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { SCAMS_DATA } from "../data/scams";
 import { ScamInfo } from "../types";
 import { 
-  Search, ShieldAlert, AlertTriangle, AlertCircle, Phone, 
+  Search, AlertTriangle as ShieldAlert, AlertTriangle, AlertCircle, Phone, 
   HelpCircle, ArrowRight, CheckCircle2, ChevronRight, X, Heart, Globe
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

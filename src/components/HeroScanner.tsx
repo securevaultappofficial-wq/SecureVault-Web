@@ -5,14 +5,12 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { 
-  Shield, ShieldAlert, ShieldCheck, Binary, Trash2, 
+  Lock, AlertTriangle as ShieldAlert, CheckCircle2 as ShieldCheck, Binary, Trash2, 
   Link2, Sparkles, FileText, AlertTriangle, Languages, 
-  Loader2, Check, ArrowRight, ChevronRight, RefreshCw, Play, Lock, Send, Smartphone, Terminal, Eye, HelpCircle, Power, UserPlus, LogIn, Mail, EyeOff, X, User, Settings
+  Loader2, Check, ArrowRight, ChevronRight, RefreshCw, Play, Send, Smartphone, Terminal, Eye, HelpCircle, Power, UserPlus, LogIn, Mail, EyeOff, X, User, Settings
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { auth, incrementUserStat, db, handleFirestoreError, OperationType } from "../lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import appLogo from "../assets/images/secure_vault_logo_1779581755129.png";
+import { secureVaultIcon48, secureVaultIconSrcSet } from "../lib/brandAssets";
 import { MOCK_GOOGLE_ACCOUNTS } from "../lib/mockAccounts";
 
 type AppState = 
@@ -87,6 +85,24 @@ const SIMULATED_DEVICE_ERRORS: DeviceError[] = [
     severity: "medium"
   }
 ];
+
+async function loadFirebaseTelemetry() {
+  const [firebase, firestore] = await Promise.all([
+    import("../lib/firebase"),
+    import("firebase/firestore"),
+  ]);
+
+  return {
+    auth: firebase.auth,
+    db: firebase.db,
+    incrementUserStat: firebase.incrementUserStat,
+    handleFirestoreError: firebase.handleFirestoreError,
+    OperationType: firebase.OperationType,
+    collection: firestore.collection,
+    addDoc: firestore.addDoc,
+    serverTimestamp: firestore.serverTimestamp,
+  };
+}
 
 export default function HeroScanner() {
   const [phoneState, setPhoneState] = useState<AppState>("BOOT");
@@ -228,8 +244,9 @@ export default function HeroScanner() {
             clearInterval(interval);
             setPhoneState("SMART_RESULTS");
             
-            // Increment statistics in real Cloud Firestore database
-            if (auth.currentUser) {
+            // Increment statistics in real Cloud Firestore database after interaction only.
+            loadFirebaseTelemetry().then(({ auth, db, incrementUserStat, handleFirestoreError, OperationType, collection, addDoc, serverTimestamp }) => {
+              if (!auth.currentUser) return;
               const currentUid = auth.currentUser.uid;
               incrementUserStat(currentUid, {
                 noOfScans: 1,
@@ -251,7 +268,7 @@ export default function HeroScanner() {
                 console.error("Error logging fixedIssue to Firestore:", err);
                 handleFirestoreError(err, OperationType.CREATE, `users/${currentUid}/fixedIssues`);
               });
-            }
+            }).catch(() => {});
             return 100;
           }
           return next;
@@ -349,7 +366,8 @@ export default function HeroScanner() {
   const executeJunkClean = () => {
     setJunkCleaned(true);
     
-    if (auth.currentUser) {
+    loadFirebaseTelemetry().then(({ auth, db, incrementUserStat, handleFirestoreError, OperationType, collection, addDoc, serverTimestamp }) => {
+      if (!auth.currentUser) return;
       const currentUid = auth.currentUser.uid;
       incrementUserStat(currentUid, {
         safeJunkRemoved: 2.45
@@ -366,7 +384,7 @@ export default function HeroScanner() {
         console.error("Error logging junk clean history to Firestore:", err);
         handleFirestoreError(err, OperationType.CREATE, `users/${currentUid}/junkCleanHistory`);
       });
-    }
+    }).catch(() => {});
   };
 
   // Helper test URL safe check
@@ -403,8 +421,9 @@ export default function HeroScanner() {
       setLinkReason(reason);
       setPhoneState("LINK_SCAN_RESULTS");
 
-      // Increment link stats in Firebase
-      if (auth.currentUser) {
+      // Increment link stats in Firebase after the user runs the simulator.
+      loadFirebaseTelemetry().then(({ auth, db, incrementUserStat, handleFirestoreError, OperationType, collection, addDoc, serverTimestamp }) => {
+        if (!auth.currentUser) return;
         const currentUid = auth.currentUser.uid;
         incrementUserStat(currentUid, {
           scannedLinksCount: 1
@@ -422,7 +441,7 @@ export default function HeroScanner() {
           console.error("Error logging link scan history: ", err);
           handleFirestoreError(err, OperationType.CREATE, `users/${currentUid}/linkScanHistory`);
         });
-      }
+      }).catch(() => {});
     }, 1500);
   };
 
@@ -435,8 +454,9 @@ export default function HeroScanner() {
     setChatInput("");
     setIsTypingReply(true);
 
-    // Track AI questions count
-    if (auth.currentUser) {
+    // Track AI questions count after the user sends a prompt.
+    loadFirebaseTelemetry().then(({ auth, db, handleFirestoreError, OperationType, collection, addDoc, serverTimestamp }) => {
+      if (!auth.currentUser) return;
       const currentUid = auth.currentUser.uid;
       addDoc(collection(db, "users", currentUid, "aiSecurityAdviserChats"), {
         question: userMsg,
@@ -447,7 +467,7 @@ export default function HeroScanner() {
         console.error("Error logging chat query to Firestore:", err);
         handleFirestoreError(err, OperationType.CREATE, `users/${currentUid}/aiSecurityAdviserChats`);
       });
-    }
+    }).catch(() => {});
 
     // Dynamic responses matching standard options
     setTimeout(() => {
@@ -468,7 +488,7 @@ export default function HeroScanner() {
   };
 
   return (
-    <div className="relative w-full max-w-[340px] md:max-w-[365px] mx-auto z-10 transition-all duration-300">
+    <div className="relative w-full max-w-[300px] sm:max-w-[320px] lg:max-w-[330px] xl:max-w-[340px] mx-auto z-10 transition-all duration-300">
       
       {/* Dynamic colorful retro glowing backdrop */}
       <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-400/10 via-purple-500/10 to-emerald-400/10 rounded-[48px] blur-2xl animate-pulse"></div>
@@ -502,7 +522,7 @@ export default function HeroScanner() {
         </div>
 
         {/* Operating System Screen Frame wrapper */}
-        <div id="phone-screen-display" className="bg-[#050A12] h-[645px] pt-10 pb-6 px-4 flex flex-col justify-between select-none relative font-sans text-white overflow-hidden">
+        <div id="phone-screen-display" className="bg-[#050A12] h-[570px] sm:h-[590px] xl:h-[615px] pt-10 pb-6 px-4 flex flex-col justify-between select-none relative font-sans text-white overflow-hidden">
           
           {/* OS status bar */}
           <div className="absolute top-1 left-0 right-0 px-6 flex justify-between items-center text-[9px] font-mono text-gray-500 z-30 select-none">
@@ -580,9 +600,13 @@ export default function HeroScanner() {
                       <div className="absolute inset-0 bg-cyan-400/10 rounded-xl blur-md"></div>
                       <div className="relative bg-black border border-cyan-500/30 w-11 h-11 rounded-xl overflow-hidden flex items-center justify-center">
                         <img 
-                          src={appLogo} 
-                          alt="SecureVault Icon" 
+                          src={secureVaultIcon48}
+                          srcSet={secureVaultIconSrcSet}
+                          width={32}
+                          height={32}
+                          alt="SecureVault app icon"
                           className="w-8 h-8 object-cover" 
+                          decoding="async"
                           referrerPolicy="no-referrer"
                         />
                       </div>
@@ -600,6 +624,7 @@ export default function HeroScanner() {
                         <input 
                           type="text" 
                           readOnly 
+                          aria-label="Email address"
                           value="securevaultappofficial@gmail.com" 
                           className="w-full bg-[#080e19] border border-gray-800 rounded-lg py-2 pl-2.5 pr-8 text-[10.5px] text-gray-300 focus:outline-none"
                         />
@@ -613,6 +638,7 @@ export default function HeroScanner() {
                         <input 
                           type="password" 
                           readOnly 
+                          aria-label="Password"
                           value="dummy_password_length_here_long" 
                           className="w-full bg-[#080e19] border border-gray-800 rounded-lg py-2 pl-2.5 pr-8 text-[10.5px] text-gray-500 focus:outline-none"
                         />
@@ -685,9 +711,14 @@ export default function HeroScanner() {
                           <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-sm"></div>
                           <div className="relative bg-[#0d1527] border border-cyan-500/30 w-8 h-8 rounded-full overflow-hidden flex items-center justify-center">
                             <img 
-                              src={appLogo} 
-                              alt="SecureVault Icon" 
+                              src={secureVaultIcon48}
+                              srcSet={secureVaultIconSrcSet}
+                              width={22}
+                              height={22}
+                              alt="SecureVault app icon"
                               className="w-5.5 h-5.5 object-cover" 
+                              loading="lazy"
+                              decoding="async"
                               referrerPolicy="no-referrer"
                             />
                           </div>
@@ -854,7 +885,7 @@ export default function HeroScanner() {
                   >
                     <div className="flex items-center gap-3">
                       <div className="p-2.5 bg-cyber-green/10 text-cyber-green rounded-xl border border-cyber-green/15 group-hover:scale-105 transition-transform">
-                        <Shield className="w-4.5 h-4.5" />
+                        <Lock className="w-4.5 h-4.5" />
                       </div>
                       <div>
                         <h4 className="text-[11.5px] font-bold text-white leading-tight">Smart Scan</h4>
@@ -947,7 +978,7 @@ export default function HeroScanner() {
               >
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-4.5 h-4.5 text-cyber-green" />
+                    <Lock className="w-4.5 h-4.5 text-cyber-green" />
                     <h4 className="text-xs font-bold uppercase tracking-widest text-cyber-green font-mono">Smart Scan Settings</h4>
                   </div>
                   <p className="text-[11px] text-gray-400 leading-snug">
@@ -1773,7 +1804,7 @@ export default function HeroScanner() {
                   {/* welcome user card */}
                   <div className="bg-slate-900/50 p-2 rounded-lg border border-cyan-500/5 text-center text-[9px] font-mono text-gray-500 leading-snug font-medium select-text">
                     ACCOUNT DETAILS SINCE MOUNT:<br/>
-                    <strong className="text-cyber-green">{auth.currentUser?.email || "securevaultappofficial@gmail.com"}</strong>
+                    <strong className="text-cyber-green">{simSelectedAccount?.email || "securevaultappofficial@gmail.com"}</strong>
                   </div>
 
                   {chatMessages.map((msg, idx) => (
@@ -1858,7 +1889,7 @@ export default function HeroScanner() {
               >
                 <div>
                   <div className="flex items-center gap-1.5 border-b border-gray-900 pb-1.5 mb-2">
-                    <Shield className="w-4.5 h-4.5 text-cyan-400" />
+                    <Lock className="w-4.5 h-4.5 text-cyan-400" />
                     <h4 className="text-xs font-bold uppercase tracking-widest text-[#00f2fe] font-mono">Interactive Swiper Tools</h4>
                   </div>
                   
@@ -2211,7 +2242,7 @@ export default function HeroScanner() {
                 }`}
                 title="Security Scans"
               >
-                <Shield className="w-3.5 h-3.5" />
+                <Lock className="w-3.5 h-3.5" />
                 <span className="text-[7.5px] font-mono mt-0.5 uppercase tracking-wide font-extrabold font-mono">Scans</span>
               </button>
 

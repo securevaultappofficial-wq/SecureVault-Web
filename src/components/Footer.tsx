@@ -4,8 +4,8 @@
  */
 
 import React from "react";
-import { Shield, Phone, Globe, ShieldAlert, Heart } from "lucide-react";
-import appLogo from "../assets/images/secure_vault_logo_1779581755129.png";
+import { Phone, Globe, AlertTriangle, Heart } from "lucide-react";
+import { secureVaultIcon48, secureVaultIconSrcSet } from "../lib/brandAssets";
 
 interface FooterProps {
   setPage: (page: string) => void;
@@ -13,8 +13,20 @@ interface FooterProps {
 
 export default function Footer({ setPage }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const pageHrefs: Record<string, string> = {
+    home: "/",
+    features: "/features.html",
+    scams: "/scam-protection.html",
+    "ai-reports": "/ai-security-adviser.html",
+    download: "/#download",
+    support: "/#support",
+    privacy: "/#privacy",
+    terms: "/#terms",
+    trust: "/#trust",
+  };
 
-  const handleNavigate = (pageId: string) => {
+  const handleNavigate = (pageId: string, event?: React.MouseEvent<HTMLAnchorElement>) => {
+    event?.preventDefault();
     setPage(pageId);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -28,19 +40,24 @@ export default function Footer({ setPage }: FooterProps) {
           
           {/* Brand & Mission */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavigate("home")}>
+            <a href="/" className="flex items-center gap-2 cursor-pointer" onClick={(event) => handleNavigate("home", event)}>
               <div className="relative bg-black border border-cyan-500/30 w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
                 <img 
-                  src={appLogo} 
-                  alt="SecureVault Logo" 
+                  src={secureVaultIcon48}
+                  srcSet={secureVaultIconSrcSet}
+                  width={32}
+                  height={32}
+                  alt="SecureVault app icon"
                   className="w-full h-full object-cover" 
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <span className="font-display font-bold text-white text-base tracking-tight">
                 Secure<span className="text-cyber-cyan">Vault</span> <span className="text-xs text-gray-400 font-normal font-mono">V1</span>
               </span>
-            </div>
+            </a>
             <p className="text-sm text-gray-300 leading-relaxed max-w-md">
               SecureVault is a transparent, honest digital safety initiative built representing high-integrity cybersecurity values. We translate technical scan jargon into human relief—specifically designed to look out for Indian smartphone users and their families.
             </p>
@@ -56,22 +73,33 @@ export default function Footer({ setPage }: FooterProps) {
           <div className="lg:col-span-3">
             <h3 className="font-display text-white text-sm font-semibold tracking-wider uppercase mb-4">Official Sections</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
-              <button onClick={() => handleNavigate("home")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">1. Home</button>
-              <button onClick={() => handleNavigate("features")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">2. Products</button>
-              <button onClick={() => handleNavigate("trust")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">3. Trust & Privacy</button>
-              <button onClick={() => handleNavigate("scams")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">4. Scam Safety</button>
-              <button onClick={() => handleNavigate("ai-reports")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">5. Try SecureVault AI</button>
-              <button onClick={() => handleNavigate("download")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">6. Join Early Waitlist</button>
-              <button onClick={() => handleNavigate("support")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer">7. Support & FAQ</button>
-              <button onClick={() => handleNavigate("privacy")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer text-xs underline">8. Privacy Policy</button>
-              <button onClick={() => handleNavigate("terms")} className="text-left hover:text-cyber-cyan transition-colors cursor-pointer text-xs underline">9. Terms of Use</button>
+              {[
+                ["home", "1. Home"],
+                ["features", "2. Products"],
+                ["trust", "3. Trust & Privacy"],
+                ["scams", "4. Scam Safety"],
+                ["ai-reports", "5. Try SecureVault AI"],
+                ["download", "6. Join Early Waitlist"],
+                ["support", "7. Support & FAQ"],
+                ["privacy", "8. Privacy Policy"],
+                ["terms", "9. Terms of Use"],
+              ].map(([pageId, label]) => (
+                <a
+                  key={pageId}
+                  href={pageHrefs[pageId]}
+                  onClick={(event) => handleNavigate(pageId, event)}
+                  className={`text-left hover:text-cyber-cyan transition-colors cursor-pointer ${pageId === "privacy" || pageId === "terms" ? "text-xs underline" : ""}`}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* National Cybercrime Warning Corner */}
           <div className="lg:col-span-4 bg-slate-900 border border-red-900/30 rounded-xl p-5 shadow-inner">
             <div className="flex items-center gap-2.5 text-red-400 font-semibold text-sm font-display mb-2">
-              <ShieldAlert className="w-5 h-5 flex-shrink-0" />
+              <AlertTriangle className="w-5 h-5 flex-shrink-0" />
               <span>National Cybercrime Helpline</span>
             </div>
             <p className="text-xs text-gray-300 leading-relaxed mb-4">
@@ -100,10 +128,10 @@ export default function Footer({ setPage }: FooterProps) {
             </p>
           </div>
           <div className="flex items-center gap-4 text-gray-500 divide-x divide-gray-800">
-            <button onClick={() => handleNavigate("privacy")} className="hover:text-gray-300 cursor-pointer">Privacy Policy</button>
-            <button onClick={() => handleNavigate("terms")} className="pl-4 hover:text-gray-300 cursor-pointer">Terms of Use</button>
-            <button onClick={() => handleNavigate("support")} className="pl-4 hover:text-gray-300 cursor-pointer">Support & FAQ</button>
-            <button onClick={() => handleNavigate("download")} className="pl-4 hover:text-gray-300 cursor-pointer">Join Early Waitlist</button>
+            <a href={pageHrefs.privacy} onClick={(event) => handleNavigate("privacy", event)} className="hover:text-gray-300 cursor-pointer">Privacy Policy</a>
+            <a href={pageHrefs.terms} onClick={(event) => handleNavigate("terms", event)} className="pl-4 hover:text-gray-300 cursor-pointer">Terms of Use</a>
+            <a href={pageHrefs.support} onClick={(event) => handleNavigate("support", event)} className="pl-4 hover:text-gray-300 cursor-pointer">Support & FAQ</a>
+            <a href={pageHrefs.download} onClick={(event) => handleNavigate("download", event)} className="pl-4 hover:text-gray-300 cursor-pointer">Join Early Waitlist</a>
           </div>
         </div>
 

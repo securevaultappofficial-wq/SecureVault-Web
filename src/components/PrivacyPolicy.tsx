@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { ShieldCheck, Eye, Database, HelpCircle } from "lucide-react";
+import { CheckCircle2 as ShieldCheck, Eye, Database, HelpCircle } from "lucide-react";
 
 export default function PrivacyPolicy() {
   const lastUpdated = "May 24, 2026";

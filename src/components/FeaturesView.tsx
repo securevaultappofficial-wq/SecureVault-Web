@@ -6,7 +6,7 @@
 import React, { useState } from "react";
 import { SECURE_VAULT_FEATURES } from "../data/features";
 import { 
-  ShieldAlert, Binary, Trash2, Link2, Sparkles, 
+  AlertTriangle as ShieldAlert, Binary, Trash2, Link2, Sparkles, 
   FileText, AlertTriangle, Megaphone, Languages, Info, Check, AlertOctagon, ChevronRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
